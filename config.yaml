@@ -1,4 +1,4 @@
-godaddy_username: "fieldprotocol"
+godaddy_username: "example"
 godaddy_password: "secret"
 
 log_file: "/var/log/godaddy-ddns.log"
