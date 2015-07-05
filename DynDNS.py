@@ -97,7 +97,7 @@ def main():
 
 	# Retrieve our public IP address
 	public_ip = get_public_ip()
-	check_ip_file(public_ip)
+	check_ip_file(config, public_ip)
 
 	if check_ip_file(config, public_ip) != 1:
 		update_dns(config, public_ip)
