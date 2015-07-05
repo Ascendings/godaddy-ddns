@@ -1,0 +1,8 @@
+godaddy_username: "fieldprotocol"
+godaddy_password: "secret"
+
+log_file: "/var/log/godaddy-ddns.log"
+log_max_size: 1024
+ip_file: "/opt/godaddy-ddns/current-ip.txt"
+
+record_hostname: "@"
