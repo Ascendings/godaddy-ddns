@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#import sys
+import sys
 import os
 import logging
 import yaml
@@ -13,6 +13,10 @@ CONFIG_FILE = 'config.yaml'
 # Parses the config file
 #
 def read_config_file():
+	if not os.path.exists(CONFIG_FILE):
+		print('config.yaml does not exist. Try copying config.example.yaml to fix this.')
+		sys.exit()
+
 	with open (os.path.dirname(os.path.realpath(__file__)) + '/' + CONFIG_FILE) as myfile:
 		config = yaml.safe_load(myfile)
 
