@@ -36,9 +36,6 @@ def constrain_logfile(config):
  
 def setup_logfile(config):
 	constrain_logfile(config)
-	if config['log_level'].lower() == 'debug':
-		log_level = logging.INFO
-	elif con:
 
 	log_level = get_log_level(config['log_level'])
 	if not log_level:
