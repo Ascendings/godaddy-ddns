@@ -92,6 +92,7 @@ def update_dns(config, public_ip):
 	client.login(config['godaddy_username'], config['godaddy_password'])
  
 	for domain in client.find_domains():
+		print(domain)
 		for dns_record in client.find_dns_records(domain):
 			logging.debug("Domain '{0}' DNS records: {1}".format(domain, client.find_dns_records(domain)))
 			# only update the bluewolf subdomain
