@@ -56,7 +56,7 @@ def get_log_level(level):
 #
 def check_ip_file(config, public_ip):
 	if not os.path.exists(os.path.dirname(os.path.realpath(config['ip_file']))):
-		logging.info('Creating {0} directory for ip file.'.format(config['ip_file']))
+		logging.info('Creating {0} directory for ip file.'.format(os.path.dirname(os.path.realpath(config['ip_file']))))
 		try:
 			os.mkdir(os.path.dirname(os.path.realpath(config['ip_file'])))
 		except IOError, e:
@@ -76,15 +76,13 @@ def check_ip_file(config, public_ip):
 
 def write_ip_file(config, public_ip):
 	if not os.path.exists(config['ip_file']):
-		fo = open(config['ip_file'], "w")
-		fo.write(public_ip)
-		fo.close()
+		with open(config['ip_file'], 'w') as fo:
+			fo.write(public_ip)
 	else:
-		fo = open(config['ip_file'], "r+")
-		fo.seek(0)
-		fo.write(public_ip)
-		fo.truncate()
-		fo.close()
+		with open(config['ip_file'], 'r+') as fo:
+			fo.seek(0)
+			fo.write(public_ip)
+			fo.truncate()
 	return
  
 def update_dns(config, public_ip):
