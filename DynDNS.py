@@ -70,6 +70,7 @@ def check_ip_file(config, public_ip):
 
 		if old_ip == public_ip:
 			print "ip is the same.. not doing anything"
+			logging.info('IP has not changed, I am not doing anything now.')
 			return 1
 	# return if no file exists, or the IP is new
 	return
@@ -120,7 +121,6 @@ def main():
 
 	# Retrieve our public IP address
 	public_ip = get_public_ip()
-	check_ip_file(config, public_ip)
 
 	if check_ip_file(config, public_ip) != 1:
 		update_dns(config, public_ip)
