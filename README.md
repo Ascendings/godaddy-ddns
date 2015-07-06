@@ -12,6 +12,8 @@ This script was inspired by http://blogs.umb.edu/michaelbazzinott001/2014/09/14/
 2. [Setup - The basics of setting up godaddy-ddns](#setup)
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Limitations - OS compatibility, etc.](#limitations)
+5. [License - Licensing for the program](#license)
+6. [Contact - How to contact me](#contact)
 
 ##Overview
 
