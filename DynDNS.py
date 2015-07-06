@@ -36,13 +36,37 @@ def constrain_logfile(config):
  
 def setup_logfile(config):
 	constrain_logfile(config)
-	logging.basicConfig(filename = config['log_file'], format = '%(asctime)s %(message)s', level = logging.INFO)
+	if config['log_level'].lower() == 'debug':
+		log_level = logging.INFO
+	elif con:
+
+	log_level = get_log_level(config['log_level'])
+	if not log_level:
+		print('{0} is not a supported log level. Supported levels are INFO and DEBUG.'.format(config['log_level']))
+		sys.exit()
+
+	logging.basicConfig(filename = config['log_file'], format = '%(asctime)s %(message)s', level = log_level)
 	return
+
+def get_log_level(level):
+	return {
+		'info': logging.INFO,
+		'debug': logging.DEBUG,
+	}.get(level, False)
 
 #
 # check locally if IP has changed
 #
 def check_ip_file(config, public_ip):
+	if not os.path.exists(os.path.dirname(os.path.realpath(config['ip_file']))):
+		logging.info('Creating {0} directory for ip file.'.format(config['ip_file']))
+		try:
+			os.mkdir(os.path.dirname(os.path.realpath(config['ip_file'])))
+		except IOError, e:
+			print e
+		else:
+			print "Successful"
+
 	if os.path.exists(config['ip_file']):
 		with open(config['ip_file'], 'r') as fo:
 			old_ip = fo.read(50)
@@ -76,15 +100,15 @@ def update_dns(config, public_ip):
 			# only update the bluewolf subdomain
 			if dns_record.hostname == config['record_hostname']:
 				if public_ip != dns_record.value:
-						if client.update_dns_record(dns_record.hostname + "." + domain, public_ip):
-							logging.info("Host '{0}' public IP set to '{1}'".format(dns_record.hostname, public_ip))
-							# update our local copy of IP
-							write_ip_file(config)
-						else:
-							logging.info("Failed to update Host '{0}' IP to '{1}'".format(dns_record.hostname, public_ip))
+					if client.update_dns_record(dns_record.hostname + "." + domain, public_ip):
+						logging.info("Host '{0}' public IP set to '{1}'".format(dns_record.hostname, public_ip))
+						# update our local copy of IP
+						write_ip_file(config)
+					else:
+						logging.info("Failed to update Host '{0}' IP to '{1}'".format(dns_record.hostname, public_ip))
 				else:
-						logging.info("Nothing was changed")
-						write_ip_file(public_ip)
+					logging.info("Nothing was changed")
+					write_ip_file(public_ip)
 			else:
 				logging.info("Not {0}: '{1}', skipping".format(config['record_hostname'], dns_record.hostname))
 	return
