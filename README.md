@@ -21,7 +21,7 @@ Python script that performs DDNS checks against GoDaddy's DNS servers
 
 Simply just clone the repo, and then copy/move config.example.yaml to config.yaml
 
-This program requires a couple Python modules to get running. The required modules (which can be installed through `pip`) are:
+This program requires a couple Python modules to get running. The required modules (which can be installed through `pip install _____`) are:
 `pyyaml`
 `pygodaddy`
 
@@ -30,6 +30,44 @@ This program requires a couple Python modules to get running. The required modul
 To run this script, you simply need to do (from the script's directory):
 
 `./DynDNS.py`
+
+###Configuration
+
+All of the configuration for this program is handled through the `config.yaml` file
+
+####`godaddy_username`
+
+Your GoDaddy account's username
+
+####`godaddy_password`
+
+Your GoDaddy account's password
+
+####`log_file`
+
+The location you would like for the script's log file
+
+####`log_level`
+
+The log level you would like. Currently supported levels are `INFO` and `DEBUG`
+
+####`log_max_size`
+
+The max size (in megabytes) you would like the log file to be
+
+NOTE: this option does not currently work
+
+####`ip_file`
+
+Location where to store the public IP - this helps to avoid unnecessarily querying GoDaddy if nothing has changed
+
+NOTE: this file does not need to exist before running; it will be created as necessary
+
+####`record_hostname`
+
+The hostname of the A record to check against
+
+NOTE: This is the hostname you want to check against, NOT the fully-qualified domain name.
 
 ##Limitations
 
