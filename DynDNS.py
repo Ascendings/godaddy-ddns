@@ -101,12 +101,12 @@ def update_dns(config, public_ip):
 					if client.update_dns_record(dns_record.hostname + "." + domain, public_ip):
 						logging.info("Host '{0}' public IP set to '{1}'".format(dns_record.hostname, public_ip))
 						# update our local copy of IP
-						write_ip_file(config)
+						write_ip_file(config, public_ip)
 					else:
 						logging.info("Failed to update Host '{0}' IP to '{1}'".format(dns_record.hostname, public_ip))
 				else:
 					logging.info("Nothing was changed")
-					write_ip_file(public_ip)
+					write_ip_file(config, public_ip)
 			else:
 				logging.info("Not {0}: '{1}', skipping".format(config['record_hostname'], dns_record.hostname))
 	return
