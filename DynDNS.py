@@ -4,7 +4,7 @@ import os
 import logging
 import yaml
 import pygodaddy
-from urllib2 import urlopen
+from urllib.request import urlopen
  
 # GLOBALS
 CONFIG_FILE = 'config.yaml'
@@ -25,12 +25,12 @@ def read_config_file():
 def get_public_ip():
 	return urlopen('http://ip.42.pl/raw').read()
 
-def constrain_logfile(config):
-	# Don't allow the log file to become greater than 10MB
+def constrain_logfile(config):	
+	# Don't allow the log file too large
 	if os.path.exists(config['log_file']):
 		statinfo = os.stat(config['log_file'])
 		if statinfo.st_size >= 10485760:
-			print "removing log file"
+			print("removing log file")
 			os.remove(config['log_file'])
 	return
  
@@ -59,17 +59,17 @@ def check_ip_file(config, public_ip):
 		logging.info('Creating {0} directory for ip file.'.format(os.path.dirname(os.path.realpath(config['ip_file']))))
 		try:
 			os.mkdir(os.path.dirname(os.path.realpath(config['ip_file'])))
-		except IOError, e:
-			print e
+		except IOError as e:
+			print(e)
 		else:
-			print "Successful"
+			print("Successful")
 
 	if os.path.exists(config['ip_file']):
 		with open(config['ip_file'], 'r') as fo:
 			old_ip = fo.read(50)
 
 		if old_ip == public_ip:
-			print "ip is the same.. not doing anything"
+			print("ip is the same.. not doing anything")
 			logging.info('IP has not changed, I am not doing anything now.')
 			return 1
 	# return if no file exists, or the IP is new
