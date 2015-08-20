@@ -10,14 +10,20 @@ This script was inspired by http://blogs.umb.edu/michaelbazzinott001/2014/09/14/
 
 1. [Overview](#overview)
 2. [Setup - The basics of setting up godaddy-ddns](#setup)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [License - Licensing information](#license)
-6. [Contact - How to contact me](#contact)
+3. [Usage - How to use this thing](#usage)
+4. [Configuration - Configuration options and additional functionality](#configuration)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [License - Licensing information](#license)
+7. [Contact - How to contact me](#contact)
 
 ##Overview
 
-Python script that performs DDNS checks against GoDaddy's DNS servers
+Python application that performs DDNS checks against GoDaddy's DNS servers.
+
+This script checks the local device's public IP address using DNS (or a cached version of the address if DNS is unavailable), and
+then checks to make sure GoDaddy's record is up-to-date with the device's current IP address.
+
+I designed this program to be flexible, and rock-solid enough to perform Dynamic DNS with GoDaddy's DNS service.
 
 ##Setup
 
@@ -33,27 +39,32 @@ To run this script, you simply need to do (from the script's directory):
 
 `./DynDNS.py`
 
-###Configuration
+##Configuration
 
-All of the configuration for this program is handled through the `config.yaml` file
+All of the configuration for this program is handled through the `config.yaml` file (in the godaddy_ddns/config directory). The configuration is broken
+up into related segments for easy readability
 
-####`godaddy_username`
+###godaddy:
+
+####`username`
 
 Your GoDaddy account's username
 
-####`godaddy_password`
+####`password`
 
 Your GoDaddy account's password
 
-####`log_file`
+###log:
+
+####`file`
 
 The location you would like for the script's log file
 
-####`log_level`
+####`level`
 
 The log level you would like. Currently supported levels are `INFO` and `DEBUG`
 
-####`log_max_size`
+####`max_size`
 
 The max size (in megabytes) you would like the log file to be
 
