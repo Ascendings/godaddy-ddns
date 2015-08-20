@@ -14,7 +14,7 @@ network = Network.Network
 logger.run()
 
 # Get the public IP
-ip = Networker.getPublicIP()
+ip = network.getPublicIP()
 
 
 
