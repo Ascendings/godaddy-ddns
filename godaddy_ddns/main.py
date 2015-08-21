@@ -1,40 +1,46 @@
 #!/usr/bin/env python3
 
-# Import dependencies
+#######################
+# Import dependencies #
+#######################
 from lib import Config
 from lib import Logger
 from lib import Network
-
-# Setup our stuff
-config = Config.Config('config/config.yaml')
-logger = Logger.Logger(config.get('log'))
-network = Network.Network
-
-# Start the logger
-logger.run()
-
-# Get the public IP
-ip = network.getPublicIP()
+from lib import GoDaddy
 
 
+###############
+# Main method #
+###############
+def main():
+	# Config class
+	config = Config.Config('config/config.yaml')
+	
+	# Logger class
+	logger = Logger.Logger(config.get('log'))
+	# Start the logger
+	logger.run()
+	
+	# Network class
+	network = Network.Network({
+		'ip_file': config.get('ip.file')
+	}, logger)
+	
+	# GoDaddy class
+	godaddy = GoDaddy.GoDaddy({
+		'godaddy_username': config.get('godaddy.username'),
+		'godaddy_password': config.get('godaddy.password'),
+	}, logger)
+	
+	# Get the public IP
+	ip = network.getPublicIP()
+	
+	if network.checkIpCache(ip) != 1:
+		godaddy.updateDNS(ip)
+	else:
+		print("Everything is all good, mate")
 
-#
-# Main method
-#
-#def main():
-#	# Load the configuration
-#	config = read_config_file()
-#
-#	# Make sure the log file is all good
-#	setup_logfile(config)
-#
-#	# Retrieve our public IP address
-#	public_ip = get_public_ip()
-#
-#	if check_ip_file(config, public_ip) != 1:
-#		update_dns(config, public_ip)
-#
-#
-# Run the script
-#
-#main()
+
+# Run the program when the script is called
+if __name__ == '__main__':
+	main()
