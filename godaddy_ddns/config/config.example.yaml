@@ -2,7 +2,6 @@ godaddy:
   username: "example"
   password: "secret"
   hostname: "test"
-  type: "A"
 
 log:
   file: "/var/log/godaddy-ddns.log"
