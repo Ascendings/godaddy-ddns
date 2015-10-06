@@ -8,7 +8,7 @@ The current version does not fully work! Please take note of this.
 
 I started to build this program over the summer, and then I got hit with a few projects that took priority, and then school started to take over as well. This will be completed ASAP, I promise that. A full version will come along with an updated README and everything, just be patient.
 
-As of version 0.5.0 - from what I can test it works, however, it appears the pygodaddy library is broken (right now it's 10/6/2015) and I am unable to test past authenticating with GoDaddy.
+As of version 0.5.0 - from what I can test it works, however, it appears the pygodaddy library is broken (right now it's 10/6/2015 and I may be just doing something wrong) and I am unable to test past authenticating with GoDaddy.
 
 ###Credits
 
