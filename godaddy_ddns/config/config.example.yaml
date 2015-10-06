@@ -1,10 +1,13 @@
-godaddy_username: "example"
-godaddy_password: "secret"
+godaddy:
+  username: "example"
+  password: "secret"
+  hostname: "test"
+  type: "A"
 
-log_file: "/var/log/godaddy-ddns.log"
-log_level: "debug"
-log_max_size: 1024
+log:
+  file: "/var/log/godaddy-ddns.log"
+  level: "debug"
+  max_size: 1024
 
-ip_file: "/opt/godaddy-ddns/current-ip.txt"
-
-record_hostname: "test"
+ip:
+  file: "/opt/godaddy-ddns/current-ip.txt"
