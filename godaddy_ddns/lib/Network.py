@@ -47,6 +47,20 @@ class Network:
 				print('ip is the same.. not doing anything')
 				self.logger.info('IP has not changed, I am not doing anything now.')
 				return 1
+			else:
+				print('IP has changed, going to try to update GoDaddy.')
+				self.logger.info('IP has changed, I am going to attempt an update at GoDaddy.')
 		
 		# return if no file exists, or the IP is new
+		return
+
+	def writeIpFile(self, ip):
+		if not os.path.exists(self.config['file']):
+			with open(self.config['file'], 'w') as fo:
+				fo.write(ip)
+		else:
+			with open(self.config['file'], 'r+') as fo:
+				fo.seek(0)
+				fo.write(ip)
+				fo.truncate()
 		return
