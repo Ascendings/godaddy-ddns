@@ -28,9 +28,11 @@ def main():
 	
 	# GoDaddy class
 	godaddy = GoDaddy.GoDaddy({
-		'godaddy_username': config.get('godaddy.username'),
-		'godaddy_password': config.get('godaddy.password'),
-	}, logger)
+		'username': config.get('godaddy.username'),
+		'password': config.get('godaddy.password'),
+		'hostname': config.get('godaddy.hostname'),
+		'type': config.get('godaddy.type'),
+	}, logger, network)
 	
 	# Get the public IP
 	ip = network.getPublicIP()
