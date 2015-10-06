@@ -1,6 +1,14 @@
 # GoDaddy Dynamic DNS
 
-Current version: 0.3.1
+Current version: 0.5.0
+
+##Note
+
+The current version does not fully work! Please take note of this.
+
+I started to build this program over the summer, and then I got hit with a few projects that took priority, and then school started to take over as well. This will be completed ASAP, I promise that. A full version will come along with an updated README and everything, just be patient.
+
+As of version 0.5.0 - from what I can test it works, however, it appears the pygodaddy library is broken (right now it's 10/6/2015) and I am unable to test past authenticating with GoDaddy.
 
 ###Credits
 
@@ -54,6 +62,10 @@ Your GoDaddy account's username
 
 Your GoDaddy account's password
 
+####`hostname`
+
+The hostname/record to check/change the IP
+
 ###log:
 
 ####`file`
@@ -70,21 +82,19 @@ The max size (in megabytes) you would like the log file to be
 
 NOTE: this option does not currently work
 
-####`ip_file`
+###ip:
+
+####`file`
 
 Location where to store the public IP - this helps to avoid unnecessarily querying GoDaddy if nothing has changed
 
 NOTE: this file does not need to exist before running; it will be created as necessary
 
-####`record_hostname`
-
-The hostname of the A record to check against
-
-NOTE: This is the hostname you want to check against, NOT the fully-qualified domain name.
-
 ##Limitations
 
-This module has been tested on Raspbian Wheezy, and as of now there are no issues to be aware of.
+This program has been tested on Debian/Raspbian Wheezy and Jessie and on Ubuntu 15.04, and as of now there are no issues to be aware of.
+
+As stated above, the script is not fully functional yet.
 
 ##License
 
