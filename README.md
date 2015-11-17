@@ -1,6 +1,6 @@
 # GoDaddy Dynamic DNS
 
-Current version: 0.5.0
+Current version: 0.7.0
 
 ##Note
 
@@ -35,17 +35,29 @@ I designed this program to be flexible, and rock-solid enough to perform Dynamic
 
 ##Setup
 
-Simply just clone the repo, and then copy/move config.example.yaml to config.yaml
+Do note that this program requires Python 3 (was tested with Python3.4). I'm sure it's possible to make this script run under Python 2, but I won't be doing that :). That means you will need to use the appropriate python and pip commands (or install the proper packges) that will go along with Python 3.x.
 
-This program requires a couple Python modules to get running. The required modules (which can be installed through `pip install _____`) are:
+So to get started, simply just clone the repo, and then rename config.example.yaml to config.yaml - you may want to make a copy of this file first for a reference.
+
+This program requires a couple Python modules to get running. The required modules (which can be installed through `pip3 install _____`) are:
 `pyyaml`
 `pygodaddy`
+
 
 ##Usage
 
 To run this script, you simply need to do (from the script's directory):
 
-`./DynDNS.py`
+`python3 godaddy-ddns/main.py`
+
+Or you just run it from wherever you want:
+
+`python3 path/to/godaddy-ddns/main.py`
+
+###Repition for DynDNS effect
+
+To truly have DynDNS, you will need to make a cron job (or something similar) that will run this script however often you please. I could make this program daemon and have it be a standalone program if people demand it.
+
 
 ##Configuration
 
@@ -90,16 +102,23 @@ Location where to store the public IP - this helps to avoid unnecessarily queryi
 
 NOTE: this file does not need to exist before running; it will be created as necessary
 
-##Limitations
 
-This program has been tested on Debian/Raspbian Wheezy and Jessie and on Ubuntu 15.04, and as of now there are no issues to be aware of.
+##Limitations/Issues
 
-As stated above, the script is not fully functional yet.
+This program has been tested on Debian/Raspbian Wheezy and Jessie and on Ubuntu 15.04, and as of now there is only one small issue to be aware of.
+
+After you run the script, be sure to check the log (by default this is in /var/log/godaddy-ddns.log) for any errors, as the script (as of now) does not report an error because of the new website. It looks like the pip package version of pygodaddy is not yet functional with the new GoDaddy website. To fix this, you will need to apply this fix, courtesy of claneys on GitHub.com, to your pygodaddy installation: https://github.com/claneys/pygodaddy/commit/9bfd1ffc082872947442c97471934f90053bb123
+
+As stated above, the script is not guaranteed to be fully functional yet, although I have been making some serious progress with this project.
+
 
 ##License
 
 This script/program is licensed under the Apache License 2.0
 
+
 ##Contact
 
-brotherballantine@gmail.com
+Email me at: brotherballantine@gmail.com
+
+Or hit me up on Google+ (https://plus.google.com/+GregoryBallantine1) or something
