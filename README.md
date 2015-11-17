@@ -8,7 +8,7 @@ The current version does not fully work! Please take note of this.
 
 I started to build this program over the summer, and then I got hit with a few projects that took priority, and then school started to take over as well. This will be completed ASAP, I promise that. A full version will come along with an updated README and everything, just be patient.
 
-As of version 0.5.0 - from what I can test it works, however, it appears the pygodaddy library is broken (right now it's 10/6/2015 and I may be just doing something wrong) and I am unable to test past authenticating with GoDaddy.
+As of version 0.7.0 - from what I can test it works. However, it appears the pygodaddy library - at least the version in the pip repos - is broken (right now it's 11/17/2015 and I may be just doing something wrong) because of the new GoDaddy website. There is a fix available, courtesy of claneys on GitHub.com, at: https://github.com/claneys/pygodaddy/commit/9bfd1ffc082872947442c97471934f90053bb123
 
 ###Credits
 
@@ -107,7 +107,7 @@ NOTE: this file does not need to exist before running; it will be created as nec
 
 This program has been tested on Debian/Raspbian Wheezy and Jessie and on Ubuntu 15.04, and as of now there is only one small issue to be aware of.
 
-After you run the script, be sure to check the log (by default this is in /var/log/godaddy-ddns.log) for any errors, as the script (as of now) does not report an error because of the new website. It looks like the pip package version of pygodaddy is not yet functional with the new GoDaddy website. To fix this, you will need to apply this fix, courtesy of claneys on GitHub.com, to your pygodaddy installation: https://github.com/claneys/pygodaddy/commit/9bfd1ffc082872947442c97471934f90053bb123
+After you run the script, be sure to check the log (by default this is in /var/log/godaddy-ddns.log) for any errors, as the script (as of now) does not report an error because of the new website. If this is the case, look at the note at the beginning of this README and apply the fix.
 
 As stated above, the script is not guaranteed to be fully functional yet, although I have been making some serious progress with this project.
 
